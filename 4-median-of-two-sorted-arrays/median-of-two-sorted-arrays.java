@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int array[] = new int[nums1.length + nums2.length];
