@@ -2,8 +2,8 @@ class Solution {
     public int findPeakElement(int[] nums) {
         int peak = 0;
         int index = 0;
-        int memo = -2147483648;
-        int temp = -2147483648;
+        int memo = Integer.MIN_VALUE;
+        int temp = Integer.MIN_VALUE;
 
         while (index < nums.length) {
 
