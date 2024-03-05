@@ -1,33 +1,22 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
-        int index = 0;
-        int result =0;
-        Set<Integer> one = new HashSet<>();
-        Set<Integer> two = new HashSet<>();
+        int left = 0;
+        int right = nums.length - 1;
 
-        while (index < nums.length) {
-            if (index %2 ==0) {
-                one.add(nums[index]);
-            }else {
-                two.add(nums[index]);
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+
+            if (mid % 2 == 1) {
+                mid--;
             }
-            index++;
-        }
-        if (one.size() > two.size()) {
-            one.removeAll(two);
-            Iterator<Integer> it = one.iterator();
-            while(it.hasNext()) {
-                Integer value = it.next();
-                result = value;
-            }
-        }else {
-            two.removeAll(one);
-            Iterator<Integer> it = two.iterator();
-            while(it.hasNext()) {
-                Integer value = it.next();
-                result = value;
+
+            if (nums[mid] != nums[mid + 1]) {
+                right = mid;
+            } else {
+                left = mid + 2;
             }
         }
-        return result;   
+
+        return nums[left];
     }
 }
